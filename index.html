@@ -43,10 +43,21 @@
     background: #333;
     bottom: -30px;
     transform-origin: top;
-    transform: perspective(500px) rotateX(-25deg);   
+    transform: perspective(500px) rotateX(-25deg); 
+  }
+  
+  .shadow {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 95%;
+    height: 60
   }
 </style>
 <body>
   
-  <div class="infinite"></div>
+  <div class="infinite">
+  <div class="shadow"></div>
+  </div>
+
 </body>
