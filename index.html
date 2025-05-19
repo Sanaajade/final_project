@@ -16,11 +16,11 @@
   .infinite {
     position: relative;
     width: 800px;
-    height: 160px;
+    height: 110px;
     background: #525252;
     transform-origin: bottom;
     transform-style: preserve-3d;
-    transform: perspective(500px) rotateX(30deg);
+    transform: perspective(500px) rotateX(40deg);
   }
   
   .infinite::before {
@@ -48,16 +48,29 @@
   
   .shadow {
     position: absolute;
-    bottom: 0;
+    bottom: -90px;
     left: 50%;
+    transform: translateX(-50%);
     width: 95%;
-    height: 60
+    height: 60px;
+    background: linear-gradient(#000, transparent);
+    opacity: 0.5;
+  }
+  
+  .car {
+    position: relative;
+    height: 300px;
+    width: 300px;
+    transform: perspective(500px) rotateX(-25deg) translateY(-150px);
   }
 </style>
 <body>
   
   <div class="infinite">
   <div class="shadow"></div>
+    <img src="25BB59FE-9AA5-48D8-B814-233930150D24.png" alt="green car" class="car">
+
+  
   </div>
 
 </body>
