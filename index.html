@@ -1,4 +1,6 @@
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Honk&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 <style>
  * {
     margin: 0;
@@ -10,17 +12,21 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: radial-gradient(#9bdfff, #009be4);
+    background-image: url("1.jpg");
+  background-size: cover;
+   background-attachment: fixed;
+    background-position: center;
+     background-repeat: no-repeat;
   }
   
   .infinite {
     position: relative;
-    width: 800px;
+    width: 1000px;
     height: 110px;
     background: #525252;
     transform-origin: bottom;
     transform-style: preserve-3d;
-    transform: perspective(500px) rotateX(40deg);
+    transform: perspective(100px) rotateX(40deg);
   }
   
   .infinite::before {
@@ -33,8 +39,17 @@
     height: 10px;
     background: linear-gradient(90deg, #fff 0%, #fff 70%, #525252 70%, #525252 100%);
     background-size: 120px;
+    animation: animateRoad 0.4s linear infinite;
   }
-  
+  @keyframes animateRoad{
+    0% {
+      background-position: 0px;
+    }
+    100% {
+      background-position: -120px;
+    }
+  }
+
   .infinite::after {
     content: '';
     position: absolute;
@@ -59,18 +74,103 @@
   
   .car {
     position: relative;
-    height: 300px;
-    width: 300px;
-    transform: perspective(500px) rotateX(-25deg) translateY(-150px);
+    height: 100px;
+    width: 700px;
+    transform: perspective(200px) rotateX(-30deg) translateY(-460px);
   }
+  
+  button {
+    background-color: rgb(255, 182, 205);
+    padding: 20px;
+    border-radius: 20px;
+    font-size: 25px;
+    font-family: 'sans-serif';
+    width: 20vw;
+    position: center;
+    margin: 45vh;
+    color: black;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: rgb(255, 105, 134);
+  }
+
 </style>
 <body>
   
   <div class="infinite">
   <div class="shadow"></div>
-    <img src="25BB59FE-9AA5-48D8-B814-233930150D24.png" alt="green car" class="car">
-
-  
+    <div class="car">
+    <img src="Adobe Express - file (12).png
+" alt="yellow car">
+</div> 
   </div>
+  
+<button id="dayTrip">DAY</button>
+<button id="nightTrip">NIGHT</button>
 
+<script src="https://cdn.jsdelivr.net/gh/netizenorg/netnet-standard-library/build/nn.min.js"></script>
+  <script>
+  /*global nn */
+    
+    let dayTrip, nightTrip
+    
+    function playSample (e) {
+      const key =e.key
+      
+      if (key === 'day') {
+        dayTrip.loop = true
+        dayTrip.currentTime = 0
+        dayTrip.play()
+        return;
+      }
+      
+      if (key === 'night') {
+        nightTrip.loop = true
+        nightTrip.currentTime = 0
+        nightTrip.play()
+        return;
+      }
+    }
+      function fileLoaded() {
+        nn.create('span')
+        .css('font-family', '"Honk", system-ui"')
+        .content('DAY')
+        .addTo('body')
+      
+      
+        nn.create('span')
+        .css('font-family', '"Honk", system-ui"')
+        .content('NIGHT')
+        .addTo('body')
+      }
+      
+      function setup () {
+    nn.get('body').css({
+      userSelect: 'none',
+      height: '100vh',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    })
+      
+    
+    dayTrip = 
+      nn.create('audio')
+        .set('src', 'SpotiMate.io - Follow My Girl - The Japanese House.mp3', '')
+        .addTo('body')
+        .on('loadeddata', fileLoaded)
+        
+    nightTrip = 
+      nn.create('audio')
+        .set('src', 'SpotiMate.io - Anything - Griff.mp3')
+        .addTo('body')
+        .on('loadeddata', fileLoaded)
+      }
+    
+    nn.on('load', setup)
+    nn.on('keypress', playSample)
+  </script>
+  
 </body>
